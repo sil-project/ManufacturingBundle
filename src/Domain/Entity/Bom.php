@@ -1,0 +1,181 @@
+<?php
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+namespace Sil\Bundle\ManufacturingBundle\Domain\Entity;
+
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Blast\BaseEntitiesBundle\Entity\Traits\Guidable;
+use Blast\BaseEntitiesBundle\Entity\Traits\Timestampable;
+use Sil\Bundle\StockBundle\Domain\Entity\StockItemInterface;
+use Sil\Bundle\StockBundle\Domain\Entity\Uom;
+use Sil\Bundle\StockBundle\Domain\Entity\UomQty;
+
+/**
+ * @author Glenn Cavarlé <glenn.cavarle@libre-informatique.fr>
+ */
+class Bom
+{
+
+    use Guidable,
+        Timestampable;
+
+    /**
+     *
+     * @var string 
+     */
+    private $code;
+
+    /**
+     *
+     * @var StockItemInterface 
+     */
+    private $stockItem;
+
+    /**
+     *
+     * @var float 
+     */
+    private $qtyValue = 0;
+
+    /**
+     *
+     * @var Uom 
+     */
+    private $qtyUom;
+
+    /**
+     *
+     * @var Collection|BomLine[]
+     */
+    private $lines;
+
+    public function __construct()
+    {
+        $this->lines = new ArrayCollection();
+    }
+
+    /**
+     * 
+     * @return string
+     */
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    /**
+     * 
+     * @return StockItemInterface
+     */
+    public function getStockItem(): ?StockItemInterface
+    {
+        return $this->stockItem;
+    }
+
+    /**
+     * 
+     * @return UomQty
+     */
+    public function getQty(): ?UomQty
+    {
+        if ( null == $this->qtyUom ) {
+            return null;
+        }
+        return new UomQty($this->qtyUom, floatval($this->qtyValue));
+    }
+
+    /**
+     * 
+     * @param UomQty $qty
+     * @return void
+     */
+    public function setQty(UomQty $qty): void
+    {
+        $this->qtyValue = $qty->getValue();
+        $this->qtyUom = $qty->getUom();
+    }
+
+    /**
+     * 
+     * @return Collection|BomLine[]
+     */
+    public function getLines(): Collection
+    {
+        return $this->lines;
+    }
+
+    /**
+     * 
+     * @param string $code
+     * @return void
+     */
+    public function setCode(string $code): void
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * 
+     * @param StockItemInterface $stockItem
+     */
+    public function setStockItem(StockItemInterface $stockItem)
+    {
+        $this->stockItem = $stockItem;
+    }
+
+    /**
+     * 
+     * @param Collection|BomLine[] $lines
+     */
+    public function setLines(Collection $lines)
+    {
+        $this->lines = $lines;
+    }
+
+    /**
+     * 
+     * @param BomLine $line
+     * @return bool
+     */
+    public function hasLine(BomLine $line): bool
+    {
+        return $this->lines->contains($line);
+    }
+
+    /**
+     * 
+     * @param BomLine $line
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    public function addLine(BomLine $line): void
+    {
+
+        if ( $this->hasLine($line) ) {
+            throw new \InvalidArgumentException(
+                'The same BomLine cannot be added twice');
+        }
+
+        $line->setBom($this);
+        $this->lines->add($line);
+    }
+
+    /**
+     * 
+     * @param BomLine $line
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    public function removeLine(BomLine $line): void
+    {
+        if ( !$this->hasLine($line) ) {
+            throw new \InvalidArgumentException(
+                'The BomLine is not part of this Bom and cannot be removed from there');
+        }
+        $this->lines->removeElement($line);
+    }
+}
