@@ -21,7 +21,6 @@
             "Sil\\Bundle\\ManufactoringBundle\\Test\\": "tests/"
         }
     },
-    "version": "dev-wip-lisem",
     "require": {
         "php": ">=7.1",
         "symfony/symfony": ">=3.2",
