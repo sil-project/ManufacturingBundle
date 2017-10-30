@@ -27,7 +27,8 @@
         "symfony/symfony": ">=3.2",
         "blast-project/core-bundle": "self.version",
         "blast-project/base-entities-bundle": "self.version",
-        "blast-project/resource-bundle": "self.version"
+        "blast-project/resource-bundle": "self.version",
+        "sil-project/stock-bundle": "self.version"
         
     },
     "require-dev": {
