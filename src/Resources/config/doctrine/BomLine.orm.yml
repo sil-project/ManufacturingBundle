@@ -17,6 +17,7 @@ Sil\Bundle\ManufacturingBundle\Domain\Entity\BomLine:
                 
         bom: 
             targetEntity: Bom
+            inversedBy: lines
             joinColumn:
                 name: bom_id
                 referencedColumnName: id

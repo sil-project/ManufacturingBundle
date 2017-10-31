@@ -22,7 +22,7 @@ parameters:
                                 type: sonata_type_collection
                                 by_reference: false
                                 _options:
-                                    admin_code: sil_stock.admin.bom_line
+                                    admin_code: sil_manufacturing.admin.bom_line
                                     edit: inline
                                     inline: table
                     _options:

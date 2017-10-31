@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 /*
  * This file is part of the Blast Project package.
  *
@@ -9,6 +11,7 @@ declare(strict_types=1);
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
+
 namespace Sil\Bundle\ManufacturingBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -19,7 +22,6 @@ use Sil\Bundle\ManufacturingBundle\DependencyInjection\SilManufacturingExtension
  */
 class SilManufacturingBundle extends Bundle
 {
-
     public function getContainerExtension()
     {
         return new SilManufacturingExtension();

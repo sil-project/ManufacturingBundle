@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 /*
  * This file is part of the Blast Project package.
  *
@@ -9,6 +11,7 @@ declare(strict_types=1);
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
+
 namespace Sil\Bundle\ManufacturingBundle\Admin;
 
 use Blast\Bundle\ResourceBundle\Sonata\Admin\ResourceAdmin;
@@ -19,12 +22,10 @@ use Sil\Bundle\ManufacturingBundle\Domain\Generator\BomCodeGeneratorInterface;
  */
 class BomAdmin extends ResourceAdmin
 {
-
     protected $baseRouteName = 'admin_manufacturing_bom';
     protected $baseRoutePattern = 'manufacturing/bom';
 
     /**
-     *
      * @var BomCodeGeneratorInterface
      */
     private $bomCodeGenerator;
@@ -34,7 +35,6 @@ class BomAdmin extends ResourceAdmin
      */
     public function prePersist($operation)
     {
-
         $this->preUpdate($operation);
     }
 
@@ -51,7 +51,6 @@ class BomAdmin extends ResourceAdmin
     }
 
     /**
-     * 
      * @return BomCodeGeneratorInterface
      */
     public function getBomCodeGenerator(): BomCodeGeneratorInterface
@@ -60,7 +59,6 @@ class BomAdmin extends ResourceAdmin
     }
 
     /**
-     * 
      * @param BomCodeGeneratorInterface $bomCodeGenerator
      */
     public function setBomCodeGenerator(BomCodeGeneratorInterface $bomCodeGenerator)
