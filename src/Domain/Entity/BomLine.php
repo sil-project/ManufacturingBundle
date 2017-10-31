@@ -1,9 +1,15 @@
 <?php
+
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This file is part of the Blast Project package.
+ *
+ * Copyright (C) 2015-2017 Libre Informatique
+ *
+ * This file is licenced under the GNU LGPL v3.
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
  */
+
 namespace Sil\Bundle\ManufacturingBundle\Domain\Entity;
 
 use Blast\BaseEntitiesBundle\Entity\Traits\Guidable;
@@ -16,35 +22,29 @@ use Sil\Bundle\StockBundle\Domain\Entity\UomQty;
  */
 class BomLine
 {
-
     use Guidable;
 
     /**
-     *
-     * @var Bom 
+     * @var Bom
      */
     private $bom;
 
     /**
-     *
-     * @var StockItemInterface 
+     * @var StockItemInterface
      */
     private $stockItem;
 
     /**
-     *
-     * @var float 
+     * @var float
      */
     private $qtyValue = 0;
 
     /**
-     *
-     * @var Uom 
+     * @var Uom
      */
     private $qtyUom;
 
     /**
-     * 
      * @return Bom
      */
     public function getBom(): ?Bom
@@ -53,7 +53,6 @@ class BomLine
     }
 
     /**
-     * 
      * @param Bom $bom
      */
     public function setBom(Bom $bom)
@@ -62,7 +61,6 @@ class BomLine
     }
 
     /**
-     * 
      * @return StockItemInterface
      */
     public function getStockItem(): ?StockItemInterface
@@ -71,7 +69,6 @@ class BomLine
     }
 
     /**
-     * 
      * @param StockItemInterface $stockItem
      */
     public function setStockItem(StockItemInterface $stockItem)
@@ -80,21 +77,19 @@ class BomLine
     }
 
     /**
-     * 
      * @return UomQty
      */
     public function getQty(): ?UomQty
     {
-        if ( null == $this->qtyUom ) {
+        if (null == $this->qtyUom) {
             return null;
         }
+
         return new UomQty($this->qtyUom, floatval($this->qtyValue));
     }
 
     /**
-     * 
      * @param UomQty $qty
-     * @return void
      */
     public function setQty(UomQty $qty): void
     {

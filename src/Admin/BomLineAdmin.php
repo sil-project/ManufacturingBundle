@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 /*
  * This file is part of the Blast Project package.
  *
@@ -9,6 +11,7 @@ declare(strict_types=1);
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
+
 namespace Sil\Bundle\ManufacturingBundle\Admin;
 
 use Blast\Bundle\ResourceBundle\Sonata\Admin\ResourceAdmin;
@@ -18,8 +21,6 @@ use Blast\Bundle\ResourceBundle\Sonata\Admin\ResourceAdmin;
  */
 class BomLineAdmin extends ResourceAdmin
 {
-
     protected $baseRouteName = 'admin_manufacturing_bom_line';
     protected $baseRoutePattern = 'manufacturing/bomline';
-
 }
