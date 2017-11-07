@@ -17,8 +17,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Sil\\Bundle\\ManufacturingBundle\\": "src/",
-            "Sil\\Bundle\\ManufacturingBundle\\Test\\": "tests/"
+            "Sil\\Bundle\\ManufacturingBundle\\": "/"
         }
     },
     "require": {
@@ -28,12 +27,12 @@
         "blast-project/base-entities-bundle": "self.version",
         "blast-project/resource-bundle": "self.version",
         "sil-project/stock-bundle": "self.version"
-        
+
     },
     "require-dev": {
         "symfony/phpunit-bridge": ">=3.2",
         "phpunit/phpunit": "^6.4"
-    },    
+    },
     "scripts": {
         "phpunit-install": [
             "wget https://phar.phpunit.de/phpunit-5.7.phar --output-document=bin/phpunit",
